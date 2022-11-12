@@ -18,17 +18,16 @@ function ListServices() {
     <>
       <section className="wrapper__list">
         {loading && <progress />}
-        {!loading && !error ?
+        {!loading && !error &&
           <ul className="list">
-            {items.map((a,i) => <Item key={i} obj={a} />)}
+            {items.map((a,i) => <Item key={i} obj={a} dispatch={dispatch} />)}
           </ul>
-          : undefined}
-        {error ?
+        }
+        {error &&
           <div className="box_error">
             <span className="text-error">Произошла ошибка</span>
             <button type="button" className="button_retry" onClick={handleRetry}>Повторить запрос</button>
           </div>
-          : undefined
         }
       </section>
     </>
